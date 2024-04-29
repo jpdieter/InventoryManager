@@ -44,6 +44,8 @@ const ListProducts = () => {
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
+            <th>Quantity</th>
+            <th>SKU</th>
           </tr>
         </thead>
         <tbody>
@@ -57,6 +59,8 @@ const ListProducts = () => {
               <td>{product.name}</td>
               <td>{product.description}</td>
               <td>{product.price}</td>
+              <td>{product.quantity}</td>
+              <td>{product.sku}</td>
               <td>
                 <EditProduct products={products} />
               </td>

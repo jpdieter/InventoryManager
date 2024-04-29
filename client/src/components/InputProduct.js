@@ -4,11 +4,13 @@ const InputProduct = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [sku, setSku] = useState("");
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
-      const body = { name, price, description };
+      const body = { name, price, description, quantity, sku };
       const response = await fetch("http://localhost:4000/products", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -45,6 +47,20 @@ const InputProduct = () => {
           placeholder="Price"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
+        />
+        <input
+          type="number"
+          className="form-control"
+          placeholder="Quantity"
+          value={quantity}
+          onChange={(e) => setQuantity(e.target.value)}
+        />
+        <input
+          type="text"
+          className="form-control"
+          placeholder="SKU"
+          value={sku}
+          onChange={(e) => setSku(e.target.value)}
         />
         <button className="btn btn-success">Add</button>
       </form>
