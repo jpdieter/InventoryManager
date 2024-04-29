@@ -51,16 +51,24 @@ app.get('/products/:id', async (req, res) => {
 
 //update a product
 
-app.put('/products/:id', async(req,  res) => {
+app.put('/products/:id', async (req, res) => {
     try {
-        const {id} = req.params;
-        const {description}  = req.body;
-        const updateProduct = await pool.query('UPDATE products SET description = $1 WHERE product_id = $2', [description, id])
-        res.json("Product was updated!")
+        const { id } = req.params;
+        const { name, price, description } = req.body; // Include 'name', 'price', and 'description' in the destructuring
+
+        // Update query to include 'name', 'price', and 'description'
+        const updateProduct = await pool.query(
+            'UPDATE products SET name = $1, price = $2, description = $3 WHERE product_id = $4',
+            [name, price, description, id]
+        );
+
+        res.json("Product was updated!");
     } catch (error) {
-      console.errog(err.message)  
+        console.error(error.message); // Corrected console error statement
+        res.status(500).json({ error: 'Internal Server Error' });
     }
-})
+});
+
 
 //delete a product
 app.delete('/products/:id', async (req, res) => {
