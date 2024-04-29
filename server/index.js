@@ -15,9 +15,9 @@ app.use(express.json());
 //create a product
 app.post('/products', async(req, res) => {
     try {
-      const { name, price, description } = req.body;
-      const newProduct = await pool.query('INSERT INTO products (name, price, description) VALUES ($1, $2, $3) RETURNING *', 
-      [name, price, description]
+      const { name, price, description, quantity, sku } = req.body;
+      const newProduct = await pool.query('INSERT INTO products (name, price, description, quantity, sku) VALUES ($1, $2, $3, $4, $5) RETURNING *', 
+      [name, price, description, quantity, sku]
     );
     res.json(newProduct.rows[0]);
 
@@ -54,12 +54,12 @@ app.get('/products/:id', async (req, res) => {
 app.put('/products/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const { name, price, description } = req.body; // Include 'name', 'price', and 'description' in the destructuring
+        const { name, price, description, quantity, sku } = req.body; // Include 'name', 'price', and 'description' in the destructuring
 
         // Update query to include 'name', 'price', and 'description'
         const updateProduct = await pool.query(
-            'UPDATE products SET name = $1, price = $2, description = $3 WHERE product_id = $4',
-            [name, price, description, id]
+            'UPDATE products SET name = $1, price = $2, description = $3, quantity = $4, sku = $5, WHERE product_id = $4',
+            [name, price, description, quantity, sku, id]
         );
 
         res.json("Product was updated!");
