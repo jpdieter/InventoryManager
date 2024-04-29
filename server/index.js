@@ -15,9 +15,9 @@ app.use(express.json());
 //create a product
 app.post('/products', async(req, res) => {
     try {
-      const {description}  = req.body;
-      const newProduct = await pool.query('INSERT INTO products (description) VALUES($1) RETURNING *', 
-      [description]
+      const { name, price, description } = req.body;
+      const newProduct = await pool.query('INSERT INTO products (name, price, description) VALUES ($1, $2, $3) RETURNING *', 
+      [name, price, description]
     );
     res.json(newProduct.rows[0]);
 
@@ -66,7 +66,7 @@ app.put('/products/:id', async(req,  res) => {
 app.delete('/products/:id', async (req, res) => {
     try {
         const {id} = req.params;
-        const deleteProduct = await pool.query('DELETE FROM products WHERE todo_id = $1', [id]);
+        const deleteProduct = await pool.query('DELETE FROM products WHERE product_id = $1', [id]);
         res.json('Product was deleted!')
     } catch (err){
       console.error(err.message);
