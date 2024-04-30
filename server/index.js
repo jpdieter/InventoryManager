@@ -58,7 +58,7 @@ app.put('/products/:id', async (req, res) => {
 
         // Update query to include 'name', 'price', and 'description'
         const updateProduct = await pool.query(
-            'UPDATE products SET name = $1, price = $2, description = $3, quantity = $4, sku = $5, WHERE product_id = $4',
+            'UPDATE products SET name = $1, price = $2, description = $3, quantity = $4, sku = $5 WHERE product_id = $6',
             [name, price, description, quantity, sku, id]
         );
 
