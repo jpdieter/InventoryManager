@@ -4,15 +4,14 @@ import EditProduct from "./EditProduct";
 const ListProducts = () => {
   const [products, setProducts] = useState([]);
 
-  //delete productfunction
-
-  const deleteProduct = async id => {
+  // Delete product function
+  const deleteProduct = async (id) => {
     try {
       const deleteItem = await fetch(`http://localhost:4000/products/${id}`, {
         method: "DELETE"
       });
 
-      setProducts(products.filter(products => products.product_id !== id));
+      setProducts(products.filter((product) => product.product_id !== id));
     } catch (err) {
       console.error(err.message);
     }
@@ -25,7 +24,7 @@ const ListProducts = () => {
 
       setProducts(jsonData);
     } catch (err) {
-      console.error(err.message);
+      console.error("Error fetching products:", err.message); // Log error message
     }
   };
 
@@ -33,11 +32,17 @@ const ListProducts = () => {
     getProducts();
   }, []);
 
-  console.log(products);
+  // console.log("Products:", products); // Log products array
+  // console.log("Number of Products:", products.length); // Log number of products
+
+  // Transform products array into an object
+  const productsObject = products.reduce((acc, product) => {
+    acc[product.product_id] = product;
+    return acc;
+  }, {});
 
   return (
     <Fragment>
-      {" "}
       <table className="table mt-5 text-center">
         <thead>
           <tr>
@@ -49,12 +54,7 @@ const ListProducts = () => {
           </tr>
         </thead>
         <tbody>
-          {/*<tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-          </tr> */}
-          {products.map(product => (
+          {products.map((product) => (
             <tr key={product.product_id}>
               <td>{product.name}</td>
               <td>{product.description}</td>
@@ -62,7 +62,8 @@ const ListProducts = () => {
               <td>{product.quantity}</td>
               <td>{product.sku}</td>
               <td>
-                <EditProduct products={products} />
+                {/* Pass productsObject as prop */}
+                <EditProduct products={productsObject} />
               </td>
               <td>
                 <button
