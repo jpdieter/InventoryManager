@@ -8,7 +8,16 @@ const EditProduct = ({ products }) => {
   const [quantity, setQuantity] = useState("");
   const [sku, setSku] = useState("");
 
-  console.log(products)
+  // Function to set initial state when "Edit" button is clicked
+  const populateEditFields = (productId) => {
+    const product = products[productId];
+    setName(product.name);
+    setPrice(product.price);
+    setDescription(product.description);
+    setQuantity(product.quantity);
+    setSku(product.sku);
+  };
+
   // Function to handle product update
   const updateProduct = async (productId) => {
     try {
@@ -50,6 +59,7 @@ const EditProduct = ({ products }) => {
             className="btn btn-warning"
             data-bs-toggle="modal"
             data-bs-target={`#id${productId}`}
+            onClick={() => populateEditFields(productId)} // Call editProduct on click
           >
             Edit
           </button>
@@ -59,7 +69,7 @@ const EditProduct = ({ products }) => {
               <div className="modal-content">
                 <div className="modal-header">
                   <h4 className="modal-title">Edit Product</h4>
-                  <button type="button" className="close" data-dismiss="modal">
+                  <button type="button" className="close" data-bs-dismiss="modal">
                     &times;
                   </button>
                 </div>
@@ -109,12 +119,12 @@ const EditProduct = ({ products }) => {
                     data-dismiss="modal"
                     onClick={() => updateProduct(productId)}
                   >
-                    Edit
+                    Update
                   </button>
                   <button
                     type="button"
                     className="btn btn-danger"
-                    data-dismiss="modal"
+                    data-bs-dismiss="modal"
                   >
                     Close
                   </button>
