@@ -17,9 +17,9 @@ function NavScrollExample() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Login</Nav.Link>
-            <Nav.Link href="#action2">Sign up</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/login">Login</Nav.Link>
+            <Nav.Link href="/signup">Sign up</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control
