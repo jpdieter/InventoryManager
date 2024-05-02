@@ -31,7 +31,7 @@ Inventory Manager is a web application designed to help users manage their inven
 1. Clone the repository:
 
    ```bash
-   git clone [[repository-url]](https://github.com/jpdieter/InventoryManager.git)
+   git clone https://github.com/jpdieter/InventoryManager.git
    ```
 
 2. Navigate to the project directory:
