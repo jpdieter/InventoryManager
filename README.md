@@ -16,15 +16,15 @@ Inventory Manager is a web application designed to help users manage their inven
 ## Technologies Used
 
 - **Frontend:**
-  - React: A JavaScript library for building user interfaces.
-  - Bootstrap: A front-end framework for developing responsive and mobile-first websites.
+  - React
+  - Bootstrap
   
 - **Backend:**
-  - Node.js: A JavaScript runtime environment that executes JavaScript code outside a web browser.
-  - Express.js: A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+  - Node.js
+  - Express.js
 
 - **Database:**
-  - [Insert Database Name]: [Brief description of the database used, e.g., MongoDB for storing product data].
+  - Postgresql 
 
 ## Installation
 
