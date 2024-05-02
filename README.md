@@ -24,7 +24,7 @@ Inventory Manager is a web application designed to help users manage their inven
   - Express.js
 
 - **Database:**
-  - Postgresql 
+  - PostgreSQL
 
 ## Installation
 
