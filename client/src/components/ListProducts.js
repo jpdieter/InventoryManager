@@ -32,15 +32,6 @@ const ListProducts = () => {
     getProducts();
   }, []);
 
-  // console.log("Products:", products); // Log products array
-  // console.log("Number of Products:", products.length); // Log number of products
-
-  // Transform products array into an object
-  const productsObject = products.reduce((acc, product) => {
-    acc[product.product_id] = product;
-    return acc;
-  }, {});
-
   return (
     <Fragment>
       <table className="table mt-5 text-center">
@@ -62,8 +53,8 @@ const ListProducts = () => {
               <td>{product.quantity}</td>
               <td>{product.sku}</td>
               <td>
-                {/* Pass productsObject as prop */}
-                <EditProduct products={productsObject} />
+                {/* Pass the individual product as a prop */}
+                <EditProduct product={product} />
               </td>
               <td>
                 <button
