@@ -4,7 +4,7 @@
 
 ## Overview
 
-The Inventory Manager App is a web application designed to help users manage their inventory efficiently. It provides functionalities for adding, updating, and deleting products from the inventory, as well as viewing detailed information about each product.
+Inventory Manager is a web application designed to help users manage their inventory efficiently. It provides functionalities for adding, updating, and deleting products from the inventory, as well as viewing detailed information about each product.
 
 ## Features
 
