@@ -1,6 +1,6 @@
 ## InventoryManager
 
-![InventoryManager Image](public/InventoryManager.png)
+![InventoryManager Image](client/public/InventoryManager.png)
 
 ## Overview
 
