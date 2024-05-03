@@ -1,14 +1,14 @@
+import React from 'react';
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
+import Container from 'react-bootstrap/Container'; // Import Container component
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function NavScrollExample() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
-      <Container fluid>
+    <Navbar expand="lg" className="bg-dark navbar-dark">
+      <Container fluid> {/* Use the Container component here */}
         <Navbar.Brand href="#">Inventory Manager</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -21,15 +21,6 @@ function NavScrollExample() {
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="/signup">Sign up</Nav.Link>
           </Nav>
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
         </Navbar.Collapse>
       </Container>
     </Navbar>
