@@ -1,10 +1,53 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditProduct from "./EditProduct";
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
 
-const ListProducts = () => {
+const SearchAndListProducts = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
   const [products, setProducts] = useState([]);
 
-  // Delete product function
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSearchSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:4000/search', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: searchTerm }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        // Update the search results state
+        setSearchResults(data);
+      } else {
+        console.error('Search request failed:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error sending search request:', error);
+    }
+  };
+
+  const getProducts = async () => {
+    try {
+      const response = await fetch("http://localhost:4000/products");
+      const jsonData = await response.json();
+
+      setProducts(jsonData);
+    } catch (err) {
+      console.error("Error fetching products:", err.message);
+    }
+  };
+
   const deleteProduct = async (id) => {
     try {
       const deleteItem = await fetch(`http://localhost:4000/products/${id}`, {
@@ -17,23 +60,25 @@ const ListProducts = () => {
     }
   };
 
-  const getProducts = async () => {
-    try {
-      const response = await fetch("http://localhost:4000/products");
-      const jsonData = await response.json();
-
-      setProducts(jsonData);
-    } catch (err) {
-      console.error("Error fetching products:", err.message); // Log error message
-    }
-  };
-
   useEffect(() => {
     getProducts();
-  }, []);
+  }, []); // Fetch products only once when the component mounts
 
   return (
-    <Fragment>
+    <Container fluid>
+      <div className="row justify-content-center">
+        <Form className="col-md-6 d-flex mb-3 mt-5" onSubmit={handleSearchSubmit}>
+          <Form.Control
+            type="search"
+            placeholder="Search"
+            className="me-2"
+            aria-label="Search"
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+          <Button type="submit" variant="outline-success">Search</Button>
+        </Form>
+      </div>
       <table className="table mt-5 text-center">
         <thead>
           <tr>
@@ -42,34 +87,59 @@ const ListProducts = () => {
             <th>Price</th>
             <th>Quantity</th>
             <th>SKU</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
-            <tr key={product.product_id}>
-              <td>{product.name}</td>
-              <td>{product.description}</td>
-              <td>{product.price}</td>
-              <td>{product.quantity}</td>
-              <td>{product.sku}</td>
-              <td>
-                {/* Pass the individual product as a prop */}
-                <EditProduct product={product} />
-              </td>
-              <td>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => deleteProduct(product.product_id)}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
+          {searchResults.length > 0 ? (
+            searchResults.map((product) => (
+              <tr key={product.product_id}>
+                <td>{product.name}</td>
+                <td>{product.description}</td>
+                <td>{product.price}</td>
+                <td>{product.quantity}</td>
+                <td>{product.sku}</td>
+                <td>
+                  {/* Pass the individual product as a prop */}
+                  <EditProduct product={product} />
+                </td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => deleteProduct(product.product_id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            products.map((product) => (
+              <tr key={product.product_id}>
+                <td>{product.name}</td>
+                <td>{product.description}</td>
+                <td>{product.price}</td>
+                <td>{product.quantity}</td>
+                <td>{product.sku}</td>
+                <td>
+                  {/* Pass the individual product as a prop */}
+                  <EditProduct product={product} />
+                </td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => deleteProduct(product.product_id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
-    </Fragment>
+    </Container>
   );
 };
 
-export default ListProducts;
+export default SearchAndListProducts;
