@@ -6,6 +6,14 @@
 
 Inventory Manager is a web application designed for efficient inventory management, offering features for adding, updating, and deleting products, as well as detailed product information and robust search capabilities.
 
+## Table of Contents
+
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Set up the Database](#set-up-the-database)
+- [Set up the Client and Server](#set-up-the-client-and-server)
+- [Contributing](#contributing)
+
 ## Features
 
 - **Product Management:** Add, update, and delete products from the inventory.
