@@ -31,9 +31,10 @@ Inventory Manager is a web application designed for efficient inventory manageme
     product_id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     price REAL NOT NULL,
-    description TEXT NOT NULL
+    description TEXT NOT NULL,
     quantity REAL NOT NULL,
-    SKU VARCHAR(50) NOT NULL,);
+    SKU VARCHAR(50) NOT NULL
+);
 
 ## Set up the Client and Server
 
@@ -66,15 +67,16 @@ Inventory Manager is a web application designed for efficient inventory manageme
    PGHOST= The host of your local PostgreSQL database (should be localhost).
    
    PGPORT= The PORT number of your local PostgreSQL database (usually should be 5432, depends on the installation).
-   
-   
+
+    Save the file.
+ 
 5. Start the server:
 
    ```bash
    nodemon index.js   
    ```
 
-6. Navigate to the client directory.
+6. Open a new terminal and navigate to the client directory.
 
 7. Install client dependencies:
 
