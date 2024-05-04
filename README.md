@@ -4,26 +4,22 @@
 
 ## Overview
 
-Inventory Manager is a web application designed to help users manage their inventory efficiently. It provides functionalities for adding, updating, and deleting products from the inventory, as well as viewing detailed information about each product.
+Inventory Manager is a web application designed for efficient inventory management, offering features for adding, updating, and deleting products, as well as detailed product information and robust search capabilities.
 
 ## Features
 
 - **Product Management:** Add, update, and delete products from the inventory.
 - **Detailed Product Information:** View detailed information about each product, including name, description, price, quantity, and SKU.
+- **Search Functionality:** Easily locate products by searching through product names or descriptions, providing users with a convenient way to find what they need.
 - **Responsive Design:** The app is built with a responsive design, ensuring a seamless experience across various devices and screen sizes.
 
 ## Technologies Used
 
-- **Frontend:**
-  - React
-  - Bootstrap
-  
-- **Backend:**
-  - Node.js
-  - Express.js
-
-- **Database:**
-  - PostgreSQL
+- **Frontend**: React, Bootstrap.
+- **Backend**: Node.js, Express.js for server-side logic and Passport.js for authentication middleware.
+- **Database**: PostgreSQL.
+- **Version Control**: Git for version control, with GitHub for repository hosting.
+- **Deployment**: Deployment on Render.
 
 ## Installation
 
@@ -33,25 +29,33 @@ Inventory Manager is a web application designed to help users manage their inven
    git clone https://github.com/jpdieter/InventoryManager.git
    ```
 
-2. Navigate to the project directory:
+2. Navigate to the server directory.
 
-   ```bash
-   cd InventoryManager
-   ```
-
-3. Install dependencies:
+3. Install server dependencies:
 
    ```bash
    npm install
-   ```
 
-4. Start the development server:
+4. Start the server:
 
    ```bash
-   npm start
+   npm start   
    ```
 
-5. Open the app in your web browser:
+5. Navigate to the client directory.
+
+6. Install client dependencies:
+
+   ```bash
+   npm install
+
+7. Start the client:
+
+   ```bash
+   npm start   
+   ```   
+
+8. Open the app in your web browser:
 
    ```
    http://localhost:3000
