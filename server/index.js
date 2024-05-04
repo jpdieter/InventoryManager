@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 app.use(compression()); // Compress all routes
 
-app.use(helmet());
+app.use(helmet()); //Helmet to protect against well-known web vulnerabilities
 app.use(
     helmet.contentSecurityPolicy({
       directives: {
