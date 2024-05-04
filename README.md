@@ -39,7 +39,7 @@ Inventory Manager is a web application designed for efficient inventory manageme
 4. Start the server:
 
    ```bash
-   npm start   
+   nodemon index.js   
    ```
 
 5. Navigate to the client directory.
