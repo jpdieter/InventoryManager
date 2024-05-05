@@ -9,7 +9,7 @@ const compression = require("compression");
 const helmet = require('helmet');
 
 //Middleware
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 app.use(compression()); // Compress all routes
 
