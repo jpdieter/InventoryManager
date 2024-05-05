@@ -6,8 +6,8 @@ const pool = new Pool({
     user: process.env.DB_USER,
     password: process.env.DB_PASS, 
     host: process.env.DB_HOST,
-    port: process.env.DB_PORT || 5432, // Use the provided port or default to 5432
-    database: process.env.DB_NAME || 'inventorysystem' // Use the provided database name or default to 'inventorysystem'
+    port: process.env.DB_PORT,  // Use the provided port or default to 5432
+    database: process.env.DB_NAME  // Use the provided database name or default to 'inventorysystem'
 });
 
 // Validate the database connection
