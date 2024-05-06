@@ -29,6 +29,7 @@ Inventory Manager is a web application designed for efficient inventory manageme
 - **Backend**: Node.js, Express.js.
 - **Database**: PostgreSQL.
 - **Version Control**: Git for version control, with GitHub for repository hosting.
+- **Deployment**: Render
 
 ## Set up the Database
 
