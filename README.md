@@ -2,8 +2,6 @@
 
 ![InventoryManager Image](client/public/InvMgr.png)
 
-Link to live app: https://inventorymanager-1.onrender.com/
-
 ## Overview
 
 Inventory Manager is a web application designed for efficient inventory management, offering features for adding, updating, and deleting products, as well as detailed product information and robust search capabilities.
