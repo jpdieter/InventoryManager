@@ -9,6 +9,13 @@ const SearchAndListProducts = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [products, setProducts] = useState([]);
 
+// Use process.env.REACT_APP_LOCAL_BACKEND_URL and process.env.REACT_APP_PROD_BACKEND_URL
+const apiUrl = process.env.NODE_ENV === 'production' ?
+    process.env.REACT_APP_PROD_BACKEND_URL :
+    process.env.REACT_APP_LOCAL_BACKEND_URL;
+console.log('API URL:', apiUrl);
+
+
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -17,7 +24,8 @@ const SearchAndListProducts = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:4000/search', {
+      console.log("Search API URL:", `${apiUrl}/search`);
+      const response = await fetch(`${apiUrl}/search`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +47,8 @@ const SearchAndListProducts = () => {
 
   const getProducts = async () => {
     try {
-      const response = await fetch("http://localhost:4000/products");
+      console.log("Products API URL:", `${apiUrl}/products`);
+      const response = await fetch(`${apiUrl}/products`);
       const jsonData = await response.json();
 
       setProducts(jsonData);
@@ -50,7 +59,8 @@ const SearchAndListProducts = () => {
 
   const deleteProduct = async (id) => {
     try {
-      const deleteItem = await fetch(`http://localhost:4000/products/${id}`, {
+      console.log("Delete Product API URL:", `${apiUrl}/products/${id}`);
+      const deleteItem = await fetch(`${apiUrl}/products/${id}`, {
         method: "DELETE"
       });
 
@@ -61,6 +71,7 @@ const SearchAndListProducts = () => {
   };
 
   useEffect(() => {
+    console.log("Fetching products...");
     getProducts();
   }, []); // Fetch products only once when the component mounts
 

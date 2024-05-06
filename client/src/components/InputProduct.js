@@ -7,11 +7,16 @@ const InputProduct = () => {
   const [quantity, setQuantity] = useState("");
   const [sku, setSku] = useState("");
 
+  // Define backend URLs for development and production
+  const apiUrl = process.env.NODE_ENV === 'production' ?
+    process.env.REACT_APP_PROD_BACKEND_URL :
+    process.env.REACT_APP_LOCAL_BACKEND_URL;
+
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
       const body = { name, price, description, quantity, sku };
-      const response = await fetch("http://localhost:4000/products", {
+      const response = await fetch(`${apiUrl}/products`, { // Updated URL
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

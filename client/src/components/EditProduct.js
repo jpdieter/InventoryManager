@@ -8,6 +8,11 @@ const EditProduct = ({ product }) => {
   const [quantity, setQuantity] = useState(product.quantity);
   const [sku, setSku] = useState(product.sku);
 
+  // Define backend URLs for development and production
+  const apiUrl = process.env.NODE_ENV === 'production' ?
+    process.env.REACT_APP_PROD_BACKEND_URL :
+    process.env.REACT_APP_LOCAL_BACKEND_URL;
+
   useEffect(() => {
     setName(product.name);
     setPrice(product.price);
@@ -19,7 +24,7 @@ const EditProduct = ({ product }) => {
   const updateProduct = async (id) => {
     try {
       const updatedProduct = { name, price, description, quantity, sku };
-      await fetch(`http://localhost:4000/products/${id}`, {
+      await fetch(`${apiUrl}/products/${id}`, { // Updated URL
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedProduct),
