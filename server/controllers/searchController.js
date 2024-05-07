@@ -1,10 +1,17 @@
-const pool = require('../db.js'); // Import the pool instance from the parent directory
+const pool = require('../db.js');
+const { validationResult, body } = require('express-validator');
 
 const searchProduct = async (req, res) => {
-    const { name, description } = req.body;
-    const searchTerm = `%${name || description}%`;
-
     try {
+        // Validation middleware
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
+        const { name, description } = req.body;
+        const searchTerm = `%${name || description}%`;
+
         const query = `
             SELECT * 
             FROM products 
@@ -18,6 +25,13 @@ const searchProduct = async (req, res) => {
     }
 };
 
+// Validation rules for search parameters
+const searchValidationRules = [
+    body('name').optional().notEmpty(),
+    body('description').optional().notEmpty()
+];
+
 module.exports = {
-    searchProduct: searchProduct,
-}
+    searchProduct,
+    searchValidationRules
+};
