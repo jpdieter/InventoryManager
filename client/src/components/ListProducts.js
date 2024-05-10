@@ -3,7 +3,6 @@ import EditProduct from "./EditProduct";
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-import "./App.css";
 
 const SearchAndListProducts = () => {
   const [searchTerm, setSearchTerm] = useState('');
