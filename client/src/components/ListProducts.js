@@ -3,6 +3,7 @@ import EditProduct from "./EditProduct";
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
+import "./App.css";
 
 const SearchAndListProducts = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -90,7 +91,6 @@ console.log('API URL:', apiUrl);
           <Button type="submit" variant="outline-success">Search</Button>
         </Form>
       </div>
-      <div className="table-responsive">
       <table className="table mt-5 text-center">
         <thead>
           <tr>
@@ -150,7 +150,6 @@ console.log('API URL:', apiUrl);
           )}
         </tbody>
       </table>
-      </div>
     </Container>
   );
 };
