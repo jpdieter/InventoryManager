@@ -2,7 +2,7 @@
 
 ![InventoryManager Image](client/public/InvMgr.png)
 
-Live app link: https://inventorymanager-1.onrender.com/
+Live app: https://inventorymanager-1.onrender.com/
 
 ## Overview
 
