@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+
+/* Define styles for screens smaller than 576px (extra small devices) */
+@media (max-width: 575.98px) {
+  .col-sm-12 {
+    /* Make the columns take up the full width on extra small devices */
+    width: 100%;
+  }
+
+  .mt-sm-3 {
+    /* Adjust the top margin for spacing between columns on extra small devices */
+    margin-top: 1rem !important;
+  }
+}
+
+/* Define styles for screens larger than or equal to 576px (small devices) */
+@media (min-width: 576px) {
+  /* You can add specific styles for small devices here if needed */
+}
+
+/* Define styles for screens larger than or equal to 768px (medium devices) */
+@media (min-width: 768px) {
+  /* You can add specific styles for medium devices here if needed */
+}
+
+/* Define styles for screens larger than or equal to 992px (large devices) */
+@media (min-width: 992px) {
+  /* You can add specific styles for large devices here if needed */
+}
+
+/* Define styles for screens larger than or equal to 1200px (extra large devices) */
+@media (min-width: 1200px) {
+  /* You can add specific styles for extra large devices here if needed */
+}
