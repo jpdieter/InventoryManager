@@ -90,6 +90,7 @@ console.log('API URL:', apiUrl);
           <Button type="submit" variant="outline-success">Search</Button>
         </Form>
       </div>
+      <div className="table-responsive">
       <table className="table mt-5 text-center">
         <thead>
           <tr>
@@ -149,6 +150,7 @@ console.log('API URL:', apiUrl);
           )}
         </tbody>
       </table>
+      </div>
     </Container>
   );
 };
